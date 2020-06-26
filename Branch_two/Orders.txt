@@ -39,3 +39,9 @@ CREATE TABLE `Orders` (
     REFERENCES `mydb`.`Seasons_sales` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
+
+
+CREATE TABLE `Payment_methods` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `types` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
