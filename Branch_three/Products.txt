@@ -26,3 +26,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Product_categories` (
   PRIMARY KEY (`id`));
 
 
+CREATE TABLE `mydb`.`Manufacturers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `titles` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
