@@ -20,8 +20,14 @@ CREATE TABLE `Users` (
     ON DELETE NO ACTION
     ON UPDATE CASCADE);
 
+
 CREATE TABLE`Countries` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `titles` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`));
 
+
+CREATE TABLE `Languages` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `titles` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
