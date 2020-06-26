@@ -45,3 +45,10 @@ CREATE TABLE `Payment_methods` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `types` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
+
+
+CREATE TABLE `Currencies` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `types` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `types_UNIQUE` (`types` ASC) VISIBLE)
