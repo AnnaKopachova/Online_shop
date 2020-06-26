@@ -1,0 +1,54 @@
+CREATE TABLE `Orders` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `date` DATETIME NOT NULL,
+  `time` DATETIME NOT NULL,
+  `price` DECIMAL(3) NOT NULL,
+  `users_id` INT NOT NULL,
+  `delivery_id` INT NOT NULL,
+  `payment_methods_id` INT NOT NULL,
+  `currencies_id` INT NOT NULL,
+  `seasons_sales_id` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_Orders_Users_idx` (`users_id` ASC) VISIBLE,
+  INDEX `fk_Orders_Delivery_type1_idx` (`delivery_id` ASC) VISIBLE,
+  INDEX `fk_Orders_Payment_method1_idx` (`payment_methods_id` ASC) VISIBLE,
+  INDEX `fk_Orders_Currency1_idx` (`currencies_id` ASC) VISIBLE,
+  INDEX `fk_Orders_Seasons_sales1_idx` (`seasons_sales_id` ASC) VISIBLE,
+  CONSTRAINT `fk_Orders_Users`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `mydb`.`Users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Orders_Delivery`
+    FOREIGN KEY (`delivery_id`)
+    REFERENCES `mydb`.`Delivery` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Orders_Payment`
+    FOREIGN KEY (`payment_methods_id`)
+    REFERENCES `mydb`.`Payment_methods` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Orders_Currency1`
+    FOREIGN KEY (`currencies_id`)
+    REFERENCES `mydb`.`Currencies` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_Orders_Seasons_sales1`
+    FOREIGN KEY (`seasons_sales_id`)
+    REFERENCES `mydb`.`Seasons_sales` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+
+
+CREATE TABLE `Payment_methods` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `types` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+
+
+CREATE TABLE `Currencies` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `types` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `types_UNIQUE` (`types` ASC) VISIBLE)
